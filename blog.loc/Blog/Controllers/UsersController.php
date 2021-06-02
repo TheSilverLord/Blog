@@ -2,6 +2,8 @@
 namespace Blog\Controllers;
 
 use Blog\Exceptions\InvalidArgumentException;
+use Blog\Exceptions\UnauthorizedException;
+use Blog\Exceptions\ForbiddenException;
 use Blog\Models\Users\User;
 use Blog\Models\Users\UsersAuthService;
 
@@ -14,6 +16,8 @@ class UsersController extends AbstractController
             try
             {
                 $user = User::signUp($_POST);
+                $this->view->renderHTML('users/signUpSuccessful.php');
+                return;
             }
             catch (InvalidArgumentException $e)
             {
@@ -48,6 +52,27 @@ class UsersController extends AbstractController
     {
         setcookie('token', '', -1, '/', '', false, true);
         header('Location: /');
+    }
+
+    public function admin()
+    {
+        if ($this->user === null) { throw new UnauthorizedException(); }
+        elseif ($this->user->getRole() != 'admin') { throw new ForbiddenException(); }
+        if(!empty($_POST))
+        {
+            try 
+            {
+                $this->user->admin($_POST); 
+            }
+            catch (InvalidArgumentException $e)
+            {
+                $users = User::findAll();
+                $this->view->renderHTML('users/admin.php', ['error' => $e->getMessage(), 'users' => $users]);
+                return;
+            }
+        }
+        $users = User::findAll();
+        $this->view->renderHTML('users/admin.php', ['users' => $users]);
     }
 }
 ?>

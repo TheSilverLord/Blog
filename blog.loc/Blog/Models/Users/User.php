@@ -87,6 +87,18 @@ class User extends ActiveRecordEntity
 
         return $user;
     }
+
+    public function admin(array $userData): void
+    {
+        if (empty($userData['nickname'])) { throw new InvalidArgumentException('Не передан никнейм'); }
+
+        $user = User::findOneByColumn('nickname', $userData['nickname']);
+        if ($user === null) { throw new InvalidArgumentException('Нет пользователя с таким никнеймом'); }
+        elseif ($user->getRole() === 'admin') { throw new InvalidArgumentException('Этот пользователь уже обладает правами администратора'); }
+
+        $user->role = 'admin';
+        $user->save();
+    }
 }
 
 ?>

@@ -9,16 +9,25 @@
 <body>
 <table class="layout">
     <tr>
-        <td colspan="2" class="header">
-            Web-технологии 2021 года
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: right">
-            <?php if(!empty($user)):  
-            echo 'Пользователь: ' . $user->getNickname(); ?> <span>| <a href="/users/logout">Выйти</a></span>
-            <?php else: ?> <div><a href="/users/login">Войти на сайт</a> | <a href="/users/register">Регистрация</a></div>
-            <?php endif; ?>
+        <td>
+            <div class="container">
+            <div class="header-bar">
+                <h1 class="logo">Web-технологии 2021 года</h1>
+                <ul class="slider-menu">
+                    <li><a href="/">Главная страница</a></li>
+                    <li><a href="/articles/add">Добавить статью</a></li>
+                    <li><a href="/users/admin">Управление</a></li>
+                    <?php if(!empty($user)): ?>
+                        <li>|</li>
+                        <li>Пользователь: <?= $user->getNickname(); ?></li>
+                        <li><a href="/users/logout">Выйти</a></li>
+                    <?php else: ?> 
+                        <li><a href="/users/login">Войти на сайт</a></li> 
+                        <li><a href="/users/register">Регистрация</a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+            </div>
         </td>
     </tr>
     <tr>

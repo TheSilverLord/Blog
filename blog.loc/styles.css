@@ -1,33 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&family=Poiret+One&display=swap');
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to right, rgb(139, 124, 224), #725);
+}
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+}
+.header-bar {
+  position: relative;
+  width: 100%;
+  min-width: 300px;
+  height: 50px;
+  border: 10px solid transparent;
+  border-top: 10px solid #fffa;
+  border-left: 10px solid #fffa;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25) inset;
+}
+.header-bar::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30%;
+  height: 49px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #fffa;
+  border-right: 10px solid #fffa;
+  transition: 0.3s linear all;
+}
+.header-bar > .logo {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: 10px;
+  transform: translateY(-50%);
+  color: #fffc;
+  font-family: 'Philosopher', cursive;
+  cursor: default;
+  user-select: none;
+}
+.slider-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+.slider-menu > li {
+  display: inline-flex;
+  padding: 14px;
+  margin-left: 2px;
+  font-family: 'Philosopher', sans-serif;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s linear all;
+  user-select: none;
+}
+.slider-menu > li:hover {
+  color: #faa;
+  box-shadow: 0 50px 5px rgba(0, 0, 0, 0.15) inset;
+}
+.aeu-signature {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 15px;
+  line-height: 30px;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+.aeu-signature { font-family: "Philosopher"; }
+.aeu-signature > img { height: 30px; }
+
+/*Basic design*/
 .layout {
     width: 100%;
-    max-width: 1024px;
     margin: auto;
-    background-color: white;
     border-collapse: collapse;
 }
 
 .layout tr td {
     padding: 20px;
     vertical-align: top;
-    border: solid 1px gray;
+    border: solid 1px transparent;
 }
 
-.header {
-    font-size: 30px;
+.main {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    font-family: 'Philosopher';
+    color: #fff;
+}
+
+.lean{
+    font-family: 'Philosopher';
+    color: #fff;
 }
 
 .footer {
     text-align: center;
-}
-
-.sidebarHeader {
-    font-size: 20px;
-}
-
-.sidebar ul {
-    padding-left: 20px;
+    font-family: "Poiret One";
+    color: #fff;
 }
 
 a, a:visited {
-    color: darkgreen;
+    color: #fff;
 }

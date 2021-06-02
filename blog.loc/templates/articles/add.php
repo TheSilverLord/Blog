@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/../header.php'; ?>
-    <h1>Создание новой статьи</h1>
+    <h1 class="lean">Создание новой статьи</h1>
     <?php if(!empty($error)): ?>
         <div style="color: red;"><?= $error ?></div>
     <?php endif; ?>
